@@ -9,6 +9,7 @@ class NaiveBayes():
         self.y = y
         self.classes = np.unique(y)
         self.parameters = []
+        #初始化每一个类别的特征向量的均值和方差
         for i,c in enumerate(self.classes):
             X_where_c = X[np.where(y == c)]
             self.parameters.append([])
@@ -32,8 +33,8 @@ class NaiveBayes():
         posteriors = []
         for i,c in enumerate(self.classes):
             posterior = self._calculate_prior(c)
-            for feature_vector, params in zip(x, self.parameters[i]):
-                likelihood = self._calculate_likelihood(params["mean"], params["var"], feature_vector)
+            for feature_val, params in zip(x, self.parameters[i]):
+                likelihood = self._calculate_likelihood(params["mean"], params["var"], feature_val)
                 posterior *= likelihood
             posteriors.append(posterior)
         return self.classes[np.argmax(posteriors)]

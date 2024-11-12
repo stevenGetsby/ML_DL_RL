@@ -13,8 +13,10 @@ def main():
 
     clf = NaiveBayes()
     clf_s = GaussianNB()
+    
     clf.fit(X_train, y_train)
     clf_s.fit(X_train, y_train)
+    
     y_pred = clf.predict(X_test)
     y_pred_s = clf_s.predict(X_test)
 

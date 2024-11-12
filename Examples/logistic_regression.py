@@ -1,7 +1,6 @@
 from sklearn import datasets
 from utils import make_diagonal, normalize, train_test_split, accuracy_score
-from utils import Plot
-from supervised_learning import LogisticRegression
+from supervised_learning.Logistic_Regression import LogisticRegression
 
 def main():
     data = datasets.load_iris()
@@ -18,8 +17,6 @@ def main():
     y_pred = model.predict(X_test)
     accuracy = accuracy_score(y_test, y_pred)
     print("Accuracy:", accuracy)
-
-    Plot().plot_in_2d(X_test, y_pred, title="Logistic Regression", accuracy=accuracy)
 
 if __name__ == "__main__":
     main()
