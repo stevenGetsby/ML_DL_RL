@@ -4,12 +4,12 @@ from deep_learning.activation_functions import ReLU,Softmax,Sigmoid
 from deep_learning.loss_function import CrossEntropy
 
 class MultilayerPerceptron():
-    def __init__(self, n_hidden, n_iterations = 3000, learning_rate = 0.01):
+    def __init__(self, n_hidden, n_iterations, hidden_activation, output_activation,  learning_rate = 0.01):
         self.n_hidden = n_hidden
         self.n_iterations = n_iterations
         self.learning_rate = learning_rate
-        self.hidden_activation = Sigmoid()
-        self.output_activation = Softmax()
+        self.hidden_activation = hidden_activation
+        self.output_activation = output_activation
         self.loss = CrossEntropy()
     
     def _initialize_weights(self, X, y):

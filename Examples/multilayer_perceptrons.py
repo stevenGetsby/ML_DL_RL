@@ -2,6 +2,7 @@ from sklearn import datasets
 import numpy as np
 from utils import normalize,to_categorical,train_test_split,accuracy_score
 from supervised_learning.Multilayer_perceptron import MultilayerPerceptron
+from deep_learning.activation_functions import ReLU,Sigmoid,Softmax
 
 def main():
     data = datasets.load_digits()
@@ -12,9 +13,15 @@ def main():
     y = to_categorical(y)
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, seed=1)
-
+    
+    hidden_activation = Sigmoid()
+    output_activation = Softmax()
     # MLP
-    clf = MultilayerPerceptron(n_hidden=32,n_iterations=10000,learning_rate=0.01)
+    clf = MultilayerPerceptron(n_hidden=32,
+                               n_iterations=10000,
+                               hidden_activation = hidden_activation,
+                               output_activation = output_activation,
+                               learning_rate=0.01)
 
     clf.fit(X_train, y_train)
     y_pred = np.argmax(clf.predict(X_test), axis=1)
