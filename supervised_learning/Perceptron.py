@@ -4,7 +4,7 @@ from deep_learning.activation_functions import Sigmoid
 from deep_learning.loss_function import SquareLoss
 
 class Perceptron():
-    def __init__(self, n_iterations=20000, learning_rate=0.01, activation_func = Sigmoid, loss = SquareLoss):
+    def __init__(self, n_iterations=2000, learning_rate=0.01, activation_func = Sigmoid, loss = SquareLoss):
         self.n_iterations = n_iterations
         self.learning_rate = learning_rate
         self.activation_func = activation_func()
